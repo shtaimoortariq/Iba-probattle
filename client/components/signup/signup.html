@@ -30,7 +30,7 @@
 
                 <div class="input-field">
                     <i class="ion-android-contact prefix"></i>
-                    <input class="validate" type="email" id="email" ng-model="signup.username" name="email" required/>
+                    <input class="validate" type="email" id="email" ng-model="signup.email" name="email" required/>
                     <label for="email">E-mail</label>
                     <p ng-show="SignupForm.email.$error.email">In correct email.</p>
                 </div>
@@ -48,7 +48,7 @@
             </form>
 
             <button class="waves-effect waves-light btn-large accent-color width-100 m-b-20 animated bouncein delay-4"
-                    ui-sref="login" ng-disabled="!signup.username || !signup.password || !signup.name" ng-click="signup.userSignUp()">SignUP</button>
+                    ng-disabled="!signup.email || !signup.password || !signup.name" ng-click="signup.userSignUp()">SignUP</button>
 
         </div><!-- End of Main Contents -->
 

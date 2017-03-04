@@ -25,19 +25,11 @@
 
         this.loginUser = function () {
 
-            firebase.auth().signInWithEmailAndPassword(vm.email, vm.password).then(function (data) {
-                console.log(data);
-                console.log(true);
-                $state.go('dashboard');
-
-            },function(error) {
+            firebase.auth().createUserWithEmailAndPassword(vm.email, vm.password).catch(function(error) {
                 // Handle Errors here.
                 var errorCode = error.code;
                 var errorMessage = error.message;
                 // ...
-                console.log(errorCode);
-                console.log(errorMessage);
-
             });
 
         }

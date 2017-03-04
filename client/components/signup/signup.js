@@ -10,7 +10,7 @@
         .controller("SignupController", ['UserService',SignupController]);
 
     function SignupController(UserService) {
-        var _self = this;
+        var vm = this;
 
         var check = UserService.checkUser();
         if(check) {
@@ -19,27 +19,36 @@
         }
 
 
-        this.username =  ""; this.password =  "";this.name = "";
+        this.email =  "";
+        this.password =  "";
+        this.name = "";
+
+
         this.userSignUp = function() {
 
-            console.log(this.username);
+            console.log(this.email);
             console.log(this.password);
             console.log(this.name);
 
-            _self.username =  ""; _self.password =  "";_self.name = "";
+            firebase.auth().createUserWithEmailAndPassword(vm.email, vm.password).then(function (data) {
+                console.log("ELSE BLOCK");
+                var user = firebase.auth().currentUser;
+                conosle.log("user");
+                conosle.log(user);
 
+                /*firebase.database().ref('users/' + userId).set({
+                 username: name,
+                 email: email,
+                 profile_picture : imageUrl
+                 });*/
 
-
-            firebase.auth().createUserWithEmailAndPassword(_self.username, _self.password).then(
-
-                function(error) {
-                    // Handle Errors here.
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    console.log(errorCode);
-                    console.log(errorMessage);
-                    // ...
-                });
+            },function(error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // ...
+            });
+            vm.email =  ""; vm.password =  "";vm.name = "";
         }
     }
 
