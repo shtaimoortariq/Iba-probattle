@@ -16,19 +16,32 @@
 
     function DashboardController($state, $timeout, $mdSidenav) {
         var vm = this;
+        this.usersUid = 0;
 
-        var user = firebase.auth().currentUser;
-        console.log(user);
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                vm.usersUid = user.uid;
+                console.log(user);
+            } else {
+                // No user is signed in.
+            }
+        });
+
 
 
         this.toggleLeft = buildToggler('left');
         this.toggleRight = buildToggler('right');
+        this.CustomerView = false;
+        this.productName = "";
+        this.productQuantity = 0;
+        this.dateToDeliver = 0;
+        this.user = firebase.auth().currentUser.uid;
 
         function buildToggler(componentId) {
             return function() {
                 $mdSidenav(componentId).toggle();
             };
-        }
+        };
 
 
 
@@ -40,8 +53,27 @@
             }, function(error) {
                 console.error('Sign Out Error', error);
             });
-        }
+        };
 
+        this.customers = function () {
+           console.log("Customers");
+            this.CustomerView = !this.CustomerView;
+        };
+
+
+        this.admin = function() {
+            console.log("admin");
+        };
+
+        this.placeOrder = function() {
+            console.log("place order");
+
+            firebase.database().ref('Orders/' + usersUid).set({
+                username: name,
+                email: email,
+                profile_picture : imageUrl
+            });
+        };
 
 
     }
