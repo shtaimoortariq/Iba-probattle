@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Halo - Mobile Template</title>
+    <meta content="IE=edge" http-equiv="x-ua-compatible">
+    <meta content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="yes" name="apple-touch-fullscreen">
+    <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+    <!-- Icons -->
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+    <!-- Styles -->
+    <link href="./themeVendors/css/keyframes.css" rel="stylesheet" type="text/css">
+    <link href="./themeVendors/css/materialize.min.css" rel="stylesheet" type="text/css">
+    <link href="./themeVendors/css/swiper.css" rel="stylesheet" type="text/css">
+    <link href="./themeVendors/css/swipebox.min.css" rel="stylesheet" type="text/css">
+    <link href="./themeVendors/css/style.css" rel="stylesheet" type="text/css">
+
+
+
+    <script src="./themeVendors/js/jquery-2.1.0.min.js"></script>
+    <script src="./themeVendors/js/jquery.swipebox.min.js"></script>
+    <script src="./themeVendors/js/jquery.smoothState.min.js"></script>
+    <script src="./themeVendors/js/materialize.min.js"></script>
+    <script src="./themeVendors/js/swiper.min.js"></script>
+    <script src="./themeVendors/js/jquery.mixitup.min.js"></script>
+    <script src="./themeVendors/js/masonry.min.js"></script>
+    <script src="./themeVendors/js/chart.min.js"></script>
+    <script src="./themeVendors/js/functions.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="./vendors/angular-material/angular-material.css"/>
+
+    <script src="./vendors/angular/angular.js"></script>
+    <script src="./vendors/angular-animate/angular-animate.js"></script>
+    <script src="./vendors/angular-aria/angular-aria.js"></script>
+    <script src="./vendors/angular-material/angular-material.js"></script>
+    <script src="./vendors/angular-ui-router/release/angular-ui-router.js"></script>
+    <!--<script src="./vendors/angularfire/dist/angularfire.js"></script>
+    <script src="./vendors/firebase/firebase.js"></script>-->
+
+    <script src="./app.js"></script>
+    <script src="./core/config.js"></script>
+    <script src="./service.js"></script>
+
+
+    <!--<script src="./core/firebaseConfig.js"></script>-->
+
+    <script src="./components/login/login.js"></script>
+    <script src="./components/signup/signup.js"></script>
+    <script src="./components/edit/edit.js"></script>
+    <script src="./components/View/View.js"></script>
+    <script src="./components/dashboard/dashboard.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        // TODO: Replace with your project's customized code snippet
+        var config = {
+            apiKey: "AIzaSyD1iokl1Lu0sWNMHa-oyMo5HH8NNtHC5MQ",
+            authDomain: "iba-pro.firebaseapp.com",
+            databaseURL: "https://iba-pro.firebaseio.com",
+            storageBucket: "",
+            messagingSenderId: "1022078293016"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+</head>
+
+
+<body ng-app="myApp" ng-controller="AppController as app">
+
+<div ui-view></div>
+
+</body>
+</html>
