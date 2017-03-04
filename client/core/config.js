@@ -17,6 +17,13 @@
                     controllerAs: 'login'
                 })
 
+                .state("userinformation", {
+                    url: '/userinformation',
+                    templateUrl: 'components/userinformation/userinformation.html',
+                    controller: 'UserInfoController',
+                    controllerAs: 'userinfo'
+                })
+
                 .state("signup", {
                     url: '/signup',
                     templateUrl: 'components/signup/signup.html',

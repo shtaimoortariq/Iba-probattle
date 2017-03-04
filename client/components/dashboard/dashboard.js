@@ -12,13 +12,25 @@
 (function () {
 
     angular.module("myApp")
-        .controller("DashboardController", ['$state',DashboardController]);
+        .controller("DashboardController", ['$state', '$timeout', '$mdSidenav'  ,DashboardController]);
 
-    function DashboardController($state) {
+    function DashboardController($state, $timeout, $mdSidenav) {
         var vm = this;
 
         var user = firebase.auth().currentUser;
         console.log(user);
+
+
+        this.toggleLeft = buildToggler('left');
+        this.toggleRight = buildToggler('right');
+
+        function buildToggler(componentId) {
+            return function() {
+                $mdSidenav(componentId).toggle();
+            };
+        }
+
+
 
         this.logout = function () {
             firebase.auth().signOut().then(function() {

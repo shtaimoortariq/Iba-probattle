@@ -30,25 +30,31 @@
             console.log(this.password);
             console.log(this.name);
 
-            firebase.auth().createUserWithEmailAndPassword(vm.email, vm.password).then(function (data) {
-                console.log("ELSE BLOCK");
-                var user = firebase.auth().currentUser;
-                conosle.log("user");
-                conosle.log(user);
-
-                /*firebase.database().ref('users/' + userId).set({
-                 username: name,
-                 email: email,
-                 profile_picture : imageUrl
-                 });*/
-
-            },function(error) {
+            firebase.auth().createUserWithEmailAndPassword(vm.email, vm.password).catch(function(error) {
                 // Handle Errors here.
                 var errorCode = error.code;
                 var errorMessage = error.message;
                 // ...
+            }).then(function (data, error) {
+                console.log("New Data");
+
+
+                firebase.auth().onAuthStateChanged(function(user) {
+                    if (user) {
+                        console.log(user.uid);
+                        firebase.database().ref('users/' + user.uid).set({
+                            username: vm.name,
+                            email: vm.email
+                        });
+
+                        // User is signed in.
+                    } else {
+                        // No user is signed in.
+                    }
+                });
+
             });
-            vm.email =  ""; vm.password =  "";vm.name = "";
+
         }
     }
 
